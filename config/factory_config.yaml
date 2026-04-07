@@ -1,0 +1,57 @@
+# Multi-AMR Factory Navigation Configuration
+# EV/Battery Manufacturing Plant
+
+factory:
+  width: 100.0          # meters
+  height: 80.0          # meters
+  resolution: 0.5       # meters per grid cell
+
+fleet:
+  num_robots: 8
+  default_payload_kg: 100.0
+
+amr:
+  # TK-AMR Automake style specs
+  length: 1.2           # meters
+  width: 0.8
+  height: 0.4
+  turret_diameter: 0.7
+  max_payload_kg: 500.0
+  max_linear_speed: 1.5   # m/s
+  max_angular_speed: 2.0  # rad/s
+  max_turret_speed: 1.0   # rad/s
+  max_acceleration: 1.0   # m/s²
+  max_deceleration: 2.0   # m/s²
+  safety_radius: 0.9      # meters
+
+battery:
+  capacity_ah: 100.0
+  voltage: 48.0
+  discharge_per_meter: 0.02    # % per meter
+  discharge_idle: 0.001        # % per second
+  charge_rate: 1.67            # % per second (~45 min 20->100%)
+  low_threshold: 20.0          # % triggers auto-charge
+  critical_threshold: 10.0     # % emergency
+
+planning:
+  turning_radius: 2.0    # meters (Dubins paths)
+  spline_samples: 200
+  astar_heuristic: euclidean
+
+docking:
+  approach_distance: 2.0   # meters
+  docking_speed: 0.1       # m/s
+  position_tolerance: 0.01 # meters (±10mm)
+  alignment_tolerance: 0.02 # radians (~1°)
+  loading_time: 15.0       # seconds
+  unloading_time: 10.0     # seconds
+
+traffic:
+  intersection_radius: 3.0  # meters
+  safety_radius: 1.5        # meters between robots
+  slowdown_factor: 2.0      # start slowing at 2x intersection radius
+
+simulation:
+  dt: 0.1                # seconds per step
+  max_steps: 5000
+  num_tasks: 15
